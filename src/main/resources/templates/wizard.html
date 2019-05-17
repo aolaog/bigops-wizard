@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px/1.5 "Microsoft YaHei", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+        }
+
+        ul, li, i {
+            list-style: none;
+            font-style: normal
+        }
+
+        form {
+            width: 500px;
+            margin: 60px auto;
+            color: #6C6C6C;
+        }
+
+        p {
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 26px;
+            position: relative;
+        }
+
+        label {
+            float: left;
+            width: 100px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        span {
+            font-size: 12px;
+        }
+
+        #sub {
+            list-style: none;
+            background-color: #2d8cf0;
+            outline-color: #fff;
+            color: #fff !important;
+            margin-top: 0px;
+            line-height: 36px;
+            height: 36px;
+            width: 120px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 2px;
+            padding: 0 20px;
+            margin-left: 80px;
+            margin-top: 10px;
+        }
+
+        #home {
+            list-style: none;
+            background-color: #2d8cf0;
+            border: 1px solid #2d8cf0;
+            color: #fff !important;
+            margin-top: 0px;
+            line-height: 36px;
+            height: 36px;
+            width: 120px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 2px;
+            padding: 0 20px;
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+
+        p input {
+            float: left;
+            font-size: 12px;
+            color: #6C6C6C;
+            vertical-align: middle;
+            border: 1px solid #ddd;
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            padding: 3px 10px;
+            margin-right: 8px;
+        }
+
+        #yzm, #imgCode {
+            width: 88px;
+        }
+
+        .getYzm {
+            background: #FFF1E8;
+            border: 1px solid #FF751A;
+            height: 100%;
+            white-space: nowrap;
+            padding: 0 4px;
+            min-width: 188px;
+            color: #FF6A00;
+            border-radius: 3px;
+        }
+
+        p span {
+            display: none;
+            font-size: 14px;
+            color: #ff5243;
+            position: absolute;
+            top: 28px;
+            left: 100px;
+        }
+
+        span img {
+            width: 16px;
+            margin-bottom: -3px;
+        }
+
+        span b {
+            font-weight: 400;
+            font-size: 12px;
+        }
+
+        p.err input {
+            border-color: #ff5243;
+        }
+
+        p.err span {
+            display: block;
+        }
+
+        #kaptcha {
+            display: block;
+        }
+
+        .step li {
+            float: left;
+            width: 33%;
+            height: 54px;
+            position: relative;
+        }
+
+        .step span {
+            display: block;
+            height: 32px;
+            line-height: 32px;
+            position: relative;
+            text-shadow: 0 1px 0 #fff;
+            top: 34px;
+            left: -50px;
+            color: #b7b7b7;
+            font-size: 14px;
+        }
+
+        .step .step-end {
+            position: absolute;
+            top: 0;
+            right: -140px;
+            width: 150px;
+            zoom: 1;
+        }
+
+        .step .active .iconfont:before {
+            background: #00C1DE;
+        }
+
+        .step .active span {
+            color: #00C1DE;
+        }
+
+        .div-bar {
+            background: #2d8cf0;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+
+        }
+
+        .tstit {
+            display: block;
+            margin-left: 330px;
+            width: 160px;
+            margin-top: -26px;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="div-bar"><font color="white">安装向导</font></div>
+
+<form>
+    <p class="homeUrl">
+        <label for="homeUrl">首页地址：</label>
+        <input type="text" value="http://work.bigops.com" name="homeUrl"/>
+        <span><img src="/wizard/image/err.png"/><b>请输入正确的首页地址,http或https开头</b></span>
+    </p>
+    <p class="ssoUrl">
+        <label for="ssoUrl">SSO地址：</label>
+        <input type="text" value="http://sso.bigops.com" name="ssoUrl"/>
+        <span><img src="/wizard/image/err.png"/><b>请输入正确的SSO地址,http或https开头</b></span>
+    </p>
+
+    <p class="dbHost">
+        <label for="dbHost">数据库主机：</label>
+        <input type="text" value="127.0.0.1" name="dbHost"/>
+        <span><img src="/wizard/image/err.png"/><b>请输入数据库主机地址</b></span>
+
+    </p>
+    <p class="dbPort">
+        <label for="dbPort">数据库端口：</label>
+        <input type="text" value="3306" name="dbPort"/>
+        <span><img src="/wizard/image/err.png"/><b>请输入正确的数据库端口</b></span>
+
+    </p>
+    <p class="dbName">
+        <label for="dbName">数据库名称：</label>
+        <input type="text" value="bigops" name="dbName"/>
+        <span><img src="/wizard/image/err.png"/><b>请输入数据库名称</b></span>
+        <span class="tstit">建议字符集为utf8mb4</span>
+    </p>
+
+
+    <p class="dbUser">
+        <label for="dbUser">数据库用户：</label>
+        <input type="text" value="root" name="dbUser"/>
+        <span><img src="/wizard/image/err.png"/><b>请输入数据库用户</b></span>
+    </p>
+    <p class="dbPass">
+        <label for="dbPass">数据库密码：</label>
+        <input type="text" value="pass" name="dbPass"/>
+        <span><img src="/wizard/image/err.png"/><b>请输入数据库密码</b></span>
+    </p>
+    <!-- <p class="error">
+        <span><img src="/wizard/image/err.png"/><b></b></span>
+    </p>-->
+    <p>
+        <label for="dbPass">安装方式：</label><input style="width: 28px;height:16px;margin:6px 0;" type="radio" value="1"
+                                                checked/><b style="width: 80px;font-size:14px;font-weight:400;">全新</b>
+    </p>
+    <p><input id="sub" type="button" value="下一步"/></p>
+</form>
+
+<script src="/wizard/js/jQuery.3.3.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var reUrl = /^((ht|f)tps?):\/\/([\w-]+(\.[\w-]+)*\/?)+(\?([\w\-\.,@?^=%&:\/~\+#]*)+)?$/;
+    var reUrl2 = /^[0-9]*$/;
+
+    $('#sub').click(function (e) {
+        e.preventDefault();
+        var homeUrl = $('input[name=homeUrl]').val();
+        var ssoUrl = $('input[name=ssoUrl]').val();
+        var dbHost = $('input[name=dbHost]').val();
+        var dbName = $('input[name=dbName]').val();
+        var dbPort = $('input[name=dbPort]').val();
+        var dbUser = $('input[name=dbUser]').val();
+        var dbPass = $('input[name=dbPass]').val();
+        $('p').removeClass('err')
+        if (!reUrl.test(homeUrl)) {
+            err('.homeUrl', '请输入正确的首页地址,http或https开头')
+        } else if (!reUrl.test(ssoUrl)) {
+            err('.ssoUrl', '请输入正确的SSO地址,http或https开头')
+        } else if (dbHost == '') {
+            err('.dbHost', '请输入数据库主机地址')
+        } else if (dbPort == '' || !reUrl2.test(dbPort)) {
+            err('.dbPort', '请输入正确的数据库端口')
+        } else if (dbName == '') {
+            err('.dbName', '请输入数据库名称')
+        } else if (dbUser == '') {
+            err('.dbUser', '请输入数据库用户')
+        } else if (dbPass == '') {
+            err('.dbPass', '请输入数据库密码')
+        } else {
+            var params = {
+                homeUrl: homeUrl,
+                ssoUrl: ssoUrl,
+                dbHost: dbHost,
+                dbPort: dbPort,
+                dbName: dbName,
+                dbUser: dbUser,
+                dbPass: dbPass
+            }
+            $('#sub').attr('disabled', "true");
+            $('#sub').css('background', "#c3c3c3");
+            $.ajax({
+                url: "/wizard/config/generate",
+                type: "POST",
+                data: JSON.stringify(params),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result.code == 200) {
+                        window.location.href = "/wizard/success";
+                    } else {
+                        alert(result.message);
+                    }
+                    $('#sub').removeAttr("disabled");
+                    $('#sub').css('background', "#2d8cf0");
+                }
+            })
+
+        }
+    })
+
+    function err(name, txt) {
+        $(name).addClass('err');
+        $(name).find('b').html(txt)
+    }
+
+</script>
+</body>
+</html>

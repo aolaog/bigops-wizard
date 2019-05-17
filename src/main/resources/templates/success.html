@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li, i {
+            list-style: none;
+            font-style: normal
+        }
+
+        .step li {
+            float: left;
+            width: 33%;
+            height: 54px;
+            position: relative;
+        }
+
+
+        .step span {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+            text-shadow: 0 1px 0 #fff;
+            top: 34px;
+            left: -50px;
+            color: #b7b7b7;
+            font-size: 14px;
+        }
+
+
+        .success {
+            width: 80%;
+            margin: 30px auto;
+            background: #edfed0;
+            border: 1px solid #E1E1CA;
+            position: relative;
+        }
+
+        .success-icon {
+            width: 31px;
+            position: absolute;
+            top: 16px;
+            left: 48px;
+        }
+
+        .success-icon img {
+            display: block;
+            width: 100%;
+        }
+
+        .success-content {
+            margin: 14px 0 14px 87px;
+        }
+
+        .success-content p {
+            color: #333;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            margin: 6px;
+        }
+
+        .success-content a {
+            color: #b7b7b7;
+            font-size: 12px;
+            line-height: 22px;
+            text-decoration: none;
+        }
+
+        .div-bar {
+            background: #2d8cf0;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+
+        }
+
+        .concent {
+            width: 80%;
+            margin: 30px auto;
+            background: #f8f8f9;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        p {
+            line-height: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="div-bar"><font color="white">安装向导</font></div>
+<div class="success">
+    <div class="success-icon">
+        <img src="/wizard/image/success.png"/>
+    </div>
+    <div class="success-content" style="font-size: 20px;">
+        <h3>恭喜你，比格运维平台已安装成功！执行下面三步启动系统。</h3>
+    </div>
+</div>
+<div class='concent'>
+    <p>
+        1、删除安装向导<br>
+        cd /opt/bigops/workbe/webapps/<br>
+        rm -rf wizard wizard.war
+    </p>
+    <p>
+        2、重启比格运维平台<br>
+        sh /opt/bigops/workbe/bin/restart.sh
+    </p>
+    <p>
+        3、登录比格运维平台<br>
+        访问域名：<a th:href="@{${homeUrl}}"></a><span th:text="${homeUrl}"></span> <br>
+        默认用户：admin<br>
+        默认密码：bigops（登录成功后请修改密码）
+    </p>
+</div>
+
+</body>
+</html>
