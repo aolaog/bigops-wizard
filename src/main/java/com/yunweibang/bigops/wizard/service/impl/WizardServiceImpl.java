@@ -5,6 +5,7 @@ package com.yunweibang.bigops.wizard.service.impl;
 
 import com.yunweibang.bigops.common.JsonResponse;
 import com.yunweibang.bigops.util.Constants;
+import com.yunweibang.bigops.util.ExecUtil;
 import com.yunweibang.bigops.wizard.model.WizardConfig;
 import com.yunweibang.bigops.wizard.service.WizardService;
 import org.apache.ibatis.io.Resources;
@@ -32,6 +33,17 @@ public class WizardServiceImpl implements WizardService {
     @Override
     public JsonResponse generateConfig(WizardConfig config) {
         System.out.println(config);
+        FileReader fileReader = null;
+        JsonResponse response = new JsonResponse<Object>(null);
+        try {
+            fileReader = new FileReader(path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            response = new JsonResponse<Object>(1005, "/opt/bigops/config/bigops.properties文件不存在", null);
+            return response;
+        }
+        ExecUtil.execShell("chmod 777 /opt/bigops/config/bigops.properties");
+
         String ssoUrl = "sso.url";
         String homeUrl = "home.url";
         String dbUrl = "spring.datasource.url";
@@ -41,7 +53,6 @@ public class WizardServiceImpl implements WizardService {
         String password = "spring.datasource.password";
         String dataSourceUrl = dbUrlPrefix + config.getDbHost() + ":" + config.getDbPort() + "/" + config.getDbName() + dbUrlSuffix;
         Connection connection = null;
-        JsonResponse response = new JsonResponse<Object>(null);
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(dataSourceUrl, config.getDbUser(), config.getDbPass());
@@ -70,7 +81,7 @@ public class WizardServiceImpl implements WizardService {
                 Resources.setCharset(Charset.forName("GBK"));
                 //设置是否输出日志
                 runner.setLogWriter(null);
-                FileReader fileReader = null;
+                fileReader = null;
                 try {
                     fileReader = new FileReader("/opt/bigops/install/mysql/bigops-1.0.0.sql");
                 } catch (FileNotFoundException e) {

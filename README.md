@@ -1,1 +1,0 @@
-# bigops-wizard
